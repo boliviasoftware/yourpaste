@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ @result[0]['title'] }}</title>
+	<link rel="stylesheet" type="text/css" href="{{ @initial_address }}templates/css/highlight/{{ @default_highlight }}.css">
+	<script src="{{ @initial_address }}templates/js/highlight.pack.js" type="text/javascript"></script>
+	<include href="templates/header.htm" />
+</head>
+<body>
+	<include href="templates/menu.htm" />
+	<div class="container">
+		<h1>{{ @result[0]['title'] }}</h1>
+		<p><strong>Format: </strong>{{ @result[0]['format'] }}</p>
+		<p><strong>Created at:</strong> {{ @result[0]['created'] }}</p>
+		<check if="{{ @result[0]['time'] > 0 }}">
+			<true>
+				<p><strong>Expires in:</strong> {{ @result[0]['time'] }} minutes</p>
+			</true>
+		</check>
+		<pre><code class="{{ @result[0]['format'] }}">{{ @result[0]['paste'] }}</code></pre>
+		<check if="{{ @result[0]['tags'] }}">
+			<true>
+				<p class="tags"><strong>Tags:</strong>
+					<repeat group="{{ explode(',',@result[0]['tags'] ) }}" value="{{ @tag }}">
+						<span><a href="{{ @initial_address }}search/{{ trim(@tag) }}" title="{{ trim(@tag) }}" class="button tag-button">{{ trim(@tag) }}</a></span>
+					</repeat>
+				</p>
+			</true>
+		</check>
+	</div>
+	<include href="templates/footer.htm" />
+	<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

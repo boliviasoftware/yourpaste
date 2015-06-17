@@ -1,0 +1,99 @@
+// vars: @blue:#389FBD;
+// menudiv.menu {
+    background: #F7F7F7 none repeat scroll 0% 0%;
+    border: 3px solid #FD8A17;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0px #DF7002,2px 2px 0px #DF7002,3px 3px 3px rgba(0,0,0,0.35);
+    font-family: "Oswald",sans-serif;
+    height: 60px;
+    line-height: 1;
+    margin-top: 10px;
+    width: auto;
+    ul.menu {
+        background: #F3F3F3;
+        border: 0px none;
+        box-sizing: border-box;
+        display: block;
+        font-family: "Verdana";
+        line-height: 1;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        li.brand {
+            color: #444;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 20px 25px;
+        }
+        li {
+            a {
+                color: #FD8A17;
+                display: block;
+                font-size: 14px;
+                font-weight: 800;
+                padding: 20px 25px;
+                text-decoration: none;
+                transition: all 0.2s ease 0s;
+                &:hover, .active {
+                    background: #A6A6A6;
+                    color: #F2F2F2;
+                }
+            }
+        }
+    }
+}
+// formsform {
+    span.required {
+        color: red;
+        font-weight: 800;
+    }
+}
+// buttons.btn {
+    .button;
+    &.blue {
+        background-color: @blue;
+        color: #FFF;
+        &:hover {
+            // .button: hover;
+            background-color: #367F93;
+            color: #FFF;
+        }
+    }
+}
+// changelogh5 {
+    .h5;
+    color: @blue;
+    font-weight: 600;
+}
+// alert.alert {
+    border-radius: 6px;
+    margin-bottom: 8px;
+    -moz-border-radius: 6px;
+    padding: 16px;
+    -webkit-border-radius: 6px;
+    width: 100%;
+}
+.alert-success {
+    background-color: #98AF6C;
+    border-color: #5C742C;
+    color: #FFF;
+}
+// footerfooter {
+    color: #B9B9B9;
+    font-size: 11px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+    a {
+        color: darken(#B9B9B9,20%);
+        font-weight: 800;
+        text-decoration: none;
+        &:hover {
+            color: @base-link-color;
+            text-decoration: underline;
+        }
+    }
+}

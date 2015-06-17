@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Your Paste List</title>
+	<include href="templates/header.htm" />
+</head>
+<body>
+	<include href="templates/menu.htm" />
+	<div class="container">
+		<h1>System Configuration</h1>
+		<check if="{{ @done_save || @done_delete }}">
+			<true>
+				<div class="row">
+					<div class="col-8 push-2"><div class="alert alert-success block">Operation Successful!</div></div>
+				</div>
+			</true>
+		</check>
+		<form action="{{ @initial_address }}save_configuration" method="post">
+			<fieldset>
+				<legend>Style for this session</legend>
+				<div class="field-group clear row">
+					<label class="col-2" for="style">Style</label>
+					<div class="col-10">
+						<select name="style" class="field button" id="style">
+							<option value="">Select one option...</option>
+							<repeat group="{{ @styles }}" value="{{ @item }}">
+								<option value="{{ @item.style }}" <check if="{{ @item.style === @default_highlight }}"> <true>selected</true> </check> >{{ @item.style }} </option>
+							</repeat>
+						</select>
+					</div>
+				</div>
+				<div class="text-right field-group"><button type="submit" class="button button-blue">Save</button></div>
+			</fieldset>
+		</form>
+	</div>
+	<include href="templates/footer.htm" />
+</body>
+</html>

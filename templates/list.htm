@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>YourPaste List</title>
+	<include href="templates/header.htm" />
+</head>
+<body>
+	<include href="templates/menu.htm" />
+	<div class="container">
+		<h1>Paste list<check if="{{ @term }}"><true> => searching: "{{ @term }}"</true></check></h1>
+		<check if="{{ @done_save || @done_delete }}">
+			<true>
+				<div class="row">
+					<div class="col-8 push-2"><div class="alert alert-success block">Operation Successful!</div></div>
+				</div>
+			</true>
+		</check>
+		<div class="container">
+			<div class="row">
+				<div class="col-4"><a href="{{ @initial_address }}new/" title="New Paste" class="button-blue">+ New Paste</a></div>
+				<div class="col-8 text-right">
+					<form action="{{ @initial_address }}search" method="post">
+						<input type="search" name="search" value="{{ @term }}" placeholder="Search..." class="button">
+						<button type="submit" value="Search" class="button-blue">Search</button>
+						<button type="reset" value="Clear" class="button">Clear</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Format</th>
+					<th>Created</th>
+					<!-- <th>Expires (min)</th> -->
+					<!-- view (popup), edit, delete(confirmation only)  -->
+					<th>Operations</th>
+				</tr>
+			</thead>
+			<tbody>
+				<repeat group="{{ @results }}" value="{{ @item }}">
+					<tr>
+						<td><a href="{{ @initial_address }}{{ @item['alias'] }}" title="{{ @item['title'] }}">{{ @item['title'] }}</a></td>
+						<td>{{ @item['format'] }}</td>
+						<td>{{ @item['created'] }}</td>
+						<!-- <td>{{ @item['time'] }}</td> -->
+						<td><a href="{{ @initial_address }}delete/{{ @item['alias'] }}" title="Delete paste" class="button red" onclick="return confirm('Do you really want to submit the form?');">Delete paste</a></td>
+					</tr>
+				</repeat>
+			</tbody>
+		</table>
+	</div>
+	<include href="templates/footer.htm" />
+</body>
+</html>
